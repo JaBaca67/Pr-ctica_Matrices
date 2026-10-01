@@ -1,43 +1,42 @@
-#Suma de matrices
-
-"""Leer 2 matrices de 3x3 y sumar en una sola matriz"""
-
-matrizA = []
-matrizB = []
-sumaMatrizAB = []
-
-#Pedir los datos de la matrizA
-
-for i in range(3):
-    matrizA.append([])
-    for j in range(3):
-        matrizA[i].append(int(input(f"IngreseA el valor de la posición [{i+1}] [{j+1}] de la matriz A: ")))
-
-print("="*13)
-print("Matriz A:")
-for fila in matrizA:
-    print(fila)
-print("="*13)
-
-for i in range(3):
-    matrizB.append([])
-    for j in range(3):
-        matrizB[i].append(int(input(f"Ingrese el valor de la posición [{i+1}] [{j+1}] de la matriz B: ")))
+from validaciones import leerEntero
 
 
-print("Matriz B:")
-for fila in matrizB:
-    print(fila)
-print("="*13)
+def sumarMatrices():
+    """Lee dos matrices 3x3 y muestra su suma."""
+    matrizA = []
+    matrizB = []
 
-#Sumar las matrices A y B
-for i in range(3):
-    sumaMatrizAB.append([])
-    for j in range(3):
-        sumaMatrizAB[i].append(matrizA[i][j] + matrizB[i][j])
+    print("Ingrese los valores de la matriz A (3x3):")
+    for filaIndex in range(3):
+        fila = []
+        for columnaIndex in range(3):
+            valor = leerEntero(f"Ingrese el valor de [{filaIndex + 1}][{columnaIndex + 1}] de A: ")
+            fila.append(valor)
+        matrizA.append(fila)
 
-print("="*67)
-print("Suma de la matriz A y B fila por fila: ")
+    print("Ingrese los valores de la matriz B (3x3):")
+    for filaIndex in range(3):
+        fila = []
+        for columnaIndex in range(3):
+            valor = leerEntero(f"Ingrese el valor de [{filaIndex + 1}][{columnaIndex + 1}] de B: ")
+            fila.append(valor)
+        matrizB.append(fila)
 
-for fila in sumaMatrizAB:
-    print(fila)
+    sumaMatrices = []
+    for filaIndex in range(3):
+        fila = []
+        for columnaIndex in range(3):
+            fila.append(matrizA[filaIndex][columnaIndex] + matrizB[filaIndex][columnaIndex])
+        sumaMatrices.append(fila)
+
+    print("Matriz A:")
+    for fila in matrizA:
+        print(fila)
+
+    print("Matriz B:")
+    for fila in matrizB:
+        print(fila)
+
+    print("Suma de las matrices A y B:")
+    for fila in sumaMatrices:
+        print(fila)

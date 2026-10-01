@@ -1,22 +1,29 @@
 
-matriz = [[1,2],[3,4]]
+from validaciones import leerEntero
 
-for fila in matriz:
-    print(fila)
 
-#Escalar
-k = 5
+def multiplicarPorEscalar():
+    """Lee una matriz 2x2 y multiplica sus elementos por un escalar."""
+    matriz = []
+    for filaIndex in range(2):
+        fila = []
+        for columnaIndex in range(2):
+            valor = leerEntero(f"Ingrese el valor de [{filaIndex + 1}][{columnaIndex + 1}] de la matriz: ")
+            fila.append(valor)
+        matriz.append(fila)
 
-matrizB = []
-for i in range(len(matriz)):
-    matrizB.append([])
-    for j in range(len(matriz)):
-        matrizB[i].append(k * matriz[i][j]) 
+    escalar = leerEntero("Ingrese el escalar: ")
+    matrizResultado = []
+    for fila in matriz:
+        matrizResultado.append([escalar * valor for valor in fila])
 
-print("="*67)
-print(f"Escalar de la matriz A por k = {k} ")
-for fila in matrizB:
-    print(fila)
+    print("Matriz original:")
+    for fila in matriz:
+        print(fila)
+
+    print(f"Matriz multiplicada por {escalar}:")
+    for fila in matrizResultado:
+        print(fila)
 
 
 

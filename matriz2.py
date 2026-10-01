@@ -1,10 +1,17 @@
 
-matriz = []
-#Pedir los datos de matriz A
-for i in range(2):   
-    matriz.append([])
-    for j in range(2):
-        matriz[i].append(int(input(f"Ingresa el valor de la posición [{i + 1}][{j + 1}] de la matriz A: ")))
+from validaciones import leerEntero
 
 
-print(matriz)
+def mostrarMatriz():
+    """Solicita los valores de una matriz 2x2 y la muestra por filas."""
+    matriz = []
+    for filaIndex in range(2):
+        fila = []
+        for columnaIndex in range(2):
+            valor = leerEntero(f"Ingrese el valor de [{filaIndex + 1}][{columnaIndex + 1}] de la matriz: ")
+            fila.append(valor)
+        matriz.append(fila)
+
+    print("Matriz ingresada:")
+    for fila in matriz:
+        print(fila)
